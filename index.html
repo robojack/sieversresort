@@ -17,6 +17,12 @@
         background-color: #517490;
       }
 
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       .sr-only:not(:focus):not(:active) {
         clip: rect(0 0 0 0);
         clip-path: inset(50%);
@@ -36,20 +42,28 @@
 
       .overlay {
         backdrop-filter: blur(7px) saturate(150%);
-        padding: 1rem;
+        padding: 1rem 1rem 2rem;
         top: 0;
         left: 0;
         position: absolute;
-        width: calc(100dvw - 2rem);
-        height: 100dvh;
+        width: 100dvw;
+        height: 100vh;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        overflow-y: auto;
       }
 
       .overlay * + * {
         margin-top: 2rem;
+      }
+
+      .overlay-content {
+        margin: auto;
+      }
+
+      .overlay-content * {
+        margin-left: auto;
+        margin-right: auto;
       }
 
       img {
@@ -59,16 +73,18 @@
       }
 
       img.logo {
+        margin-top: 0;
         max-width: 45rem;
       }
 
       img.farewell {
         max-width: 10rem;
+        width: 30%;
       }
 
       a.button {
         background-color: rgba(255, 255, 255, 0.9);
-        display: inline-block;
+        display: block;
         border-radius: 50px;
         padding: 0.5rem 1.5rem;
         color: #517490;
@@ -76,6 +92,7 @@
         font-weight: bold;
         text-decoration: none;
         text-align: center;
+        width: fit-content;
       }
 
       a.button:hover,
@@ -90,13 +107,15 @@
       <source src="/at-the-dock.mp4" type="video/mp4" />
     </video>
     <div class="overlay">
-      <h1 class="sr-only">Sievers Resort</h1>
-      <p class="sr-only">Farewell</p>
-      <img class="logo" src="/logotype.svg" />
-      <img class="farewell" src="/farewell.svg" />
-      <a href="https://www.hackensackchamber.com" class="button"
-        >Visit the Hackensack Minnesota Chamber of Commerce</a
-      >
+      <div class="overlay-content">
+        <h1 class="sr-only">Sievers Resort</h1>
+        <p class="sr-only">Farewell</p>
+        <img class="logo" src="/logotype.svg" />
+        <img class="farewell" src="/farewell.svg" />
+        <a href="https://www.hackensackchamber.com" class="button"
+          >Visit the Hackensack Minnesota Chamber of Commerce</a
+        >
+      </div>
     </div>
   </body>
 </html>
